@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            padding: 20px;
+        }
+        .terminal {
+            border: 2px solid #00ff00;
+            padding: 20px;
+            background-color: #000000;
+            font-size: 18px;
+            overflow: auto;
+            max-width: 80%;
+            margin: 0 auto;
+            height: 400px;
+            text-align: left; /* 文字向左对齐 */
+        }
+        .nav {
+            margin-top: 20px;
+        }
+        .nav a {
+            color: #00ff00;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+        .social {
+            margin-top: 20px;
+        }
+        .social a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .options {
+            margin-top: 20px;
+        }
+        .options a {
+            color: #00ff00;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        #purrse, #miark, #miaoledge {
+            color: #00ff00;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        #purrse:focus, #miark:focus, #miaoledge:focus {
+            background-color: #00b800;
+            outline: none;
+        }
+        section {
+            margin-top: 20px;
+        }
+        section p {
+            display: inline;
+            margin: 0 10px;
+        }
+        section p a {
+            color: lime;
+        }
+    </style>
+    <title>喵知-Miaoledge</title>
+</head>
+<body>
+<div class="terminal">
+    <p>喵知科技</p>
+    <p id="typed-text"></p>
+    <a href="#" id="purrse">Purrse</a>
+    <a href="#" id="miark">Miark</a>
+</div>
+<section id="contact">
+    <p><a href="mailto:info@miaoledge.com">联系我们</a></p>
+</section>
+
+<footer>
+    <p>© 2023 喵知科技</p>
+</footer>
+<script>
+    const text = "积极开发中，敬请期待...";
+    let index = 0;
+    let isAnimating = true;
+
+    function type() {
+        if (isAnimating) {
+            document.getElementById('typed-text').innerText += text[index];
+            index++;
+            if (index === text.length) {
+                isAnimating = false;
+                index = 0;
+                document.getElementById('typed-text').innerHTML = text;
+                document.getElementById('purrse').focus();
+            }
+        }
+    }
+
+    setInterval(type, 100);
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'ArrowRight') {
+            document.getElementById('miark').focus();
+        } else if (event.key === 'ArrowLeft') {
+            document.getElementById('purrse').focus();
+        }
+    });
+</script>
+</body>
+</html>
